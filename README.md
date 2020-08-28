@@ -15,13 +15,18 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.seven-winds-studio:android-common-core:0.1.2'
+	        implementation 'com.github.seven-winds-studio:android-common-core:0.2.0'
 	}
 
 ## Included libraries:
 
+Architecture
+* Moxy - MVP
+* Cicerone - Navigation
+
+Utility
 * Glide - Images
 * KotPref - Settings
 * RxJava - Rx
-* jackson - JSON
-
+* Jackson - JSON
+* Inline Activity Result
