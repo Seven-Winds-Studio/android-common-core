@@ -5,7 +5,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'kotlin-kapt'
 
 group='com.github.seven-winds-studio'
-version = '0.1.0'
+version = '0.1.1'
 
 android {
     compileSdkVersion 29
@@ -48,4 +48,8 @@ dependencies {
     /** Rx libs */
     api 'io.reactivex.rxjava2:rxjava:2.2.10'
     api 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+
+    /** JSON */
+    api "com.fasterxml.jackson.module:jackson-module-kotlin:2.7.9.1"
 }
