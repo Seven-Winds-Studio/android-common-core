@@ -15,6 +15,6 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.Seven-Winds-Studio:android-common-core:0.1.0'
+	        implementation 'com.github.seven-winds-studio:android-common-core:0.1.1'
 	}
 
