@@ -1,4 +1,4 @@
-package mobi.sevenwinds.common_core.utils.extensions
+package mobi.sevenwinds.common.core.utils.extensions
 
 import android.content.res.Resources
 import androidx.annotation.PluralsRes

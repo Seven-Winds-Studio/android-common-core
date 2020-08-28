@@ -1,4 +1,4 @@
-package mobi.sevenwinds.common_core.utils.extensions
+package mobi.sevenwinds.common.core.utils.extensions
 
 /**
  * Returns first value is this not null && TRUE, otherwise returns second value
