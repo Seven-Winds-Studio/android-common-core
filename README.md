@@ -1,3 +1,4 @@
+[![](https://jitpack.io/v/Seven-Winds-Studio/android-common-core.svg)](https://jitpack.io/#Seven-Winds-Studio/android-common-core)
 # android-common-core
 
 Step 1. Add the JitPack repository to your build file
