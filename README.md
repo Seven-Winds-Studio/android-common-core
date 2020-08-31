@@ -12,10 +12,14 @@ Add it in your root build.gradle at the end of repositories:
 		  }
 	  }  
 
-Step 2. Add the dependency
+Step 2. Add the dependencies to module build.gradle
+
+    apply plugin: 'kotlin-kapt'
 
 	dependencies {
-	        implementation 'com.github.seven-winds-studio:android-common-core:0.2.0'
+	        implementation 'com.github.seven-winds-studio:android-common-core:0.3.0'	        
+            kapt 'com.github.bumptech.glide:compiler:4.11.0'            
+            kapt 'com.arello-mobile:moxy-compiler:1.5.3'
 	}
 
 ## Included libraries:

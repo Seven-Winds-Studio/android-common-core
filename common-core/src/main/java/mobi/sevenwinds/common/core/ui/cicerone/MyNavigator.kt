@@ -2,8 +2,6 @@ package mobi.sevenwinds.common.core.ui.cicerone
 
 import android.content.Intent
 import android.util.Log
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import mobi.sevenwinds.common.core.ui.BaseActivity
 import ru.terrakok.cicerone.Screen
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
