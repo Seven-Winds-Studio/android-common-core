@@ -2,6 +2,8 @@ package mobi.sevenwinds.common.core.ui.cicerone
 
 import android.content.Intent
 import android.util.Log
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import mobi.sevenwinds.common.core.ui.BaseActivity
 import ru.terrakok.cicerone.Screen
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
@@ -11,8 +13,17 @@ import ru.terrakok.cicerone.commands.Command
 import ru.terrakok.cicerone.commands.Forward
 import ru.terrakok.cicerone.commands.Replace
 
-class MyNavigator(val activity: BaseActivity?, private val containerId: Int) :
-    SupportAppNavigator(activity, containerId) {
+class MyNavigator(
+    val activity: BaseActivity,
+    val fragmentManager: FragmentManager,
+    val containerId: Int
+) : SupportAppNavigator(activity, fragmentManager, containerId) {
+
+    constructor(
+        activity: BaseActivity,
+        containerId: Int
+    ) : this(activity, activity.supportFragmentManager, containerId)
+
     override fun applyCommands(commands: Array<out Command>) {
         val rootIndex = commands.indexOfLast(rootPredicate)
         if (rootIndex >= 0) {
@@ -66,7 +77,10 @@ class MyNavigator(val activity: BaseActivity?, private val containerId: Int) :
         when {
             screen != null && containerId == NO_CONTAINER -> openInNewActivity(screen)
             screen != null && screen.alwaysInNewActivity -> openInNewActivity(screen)
-            screen != null && CiceroneActivityManager.hasDifferentActivities(activity, screen) -> openInNewActivity(
+            screen != null && CiceroneActivityManager.hasDifferentActivities(
+                activity,
+                screen
+            ) -> openInNewActivity(
                 screen
             )
             else -> super.fragmentForward(command)

@@ -5,7 +5,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'kotlin-kapt'
 
 group='com.github.seven-winds-studio'
-version = '0.3.0'
+version = '0.3.1'
 
 android {
     compileSdkVersion 29
@@ -14,7 +14,7 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 3
+        versionCode 4
         versionName version
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
