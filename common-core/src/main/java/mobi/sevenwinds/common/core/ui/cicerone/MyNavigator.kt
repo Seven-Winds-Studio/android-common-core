@@ -2,8 +2,12 @@ package mobi.sevenwinds.common.core.ui.cicerone
 
 import android.content.Intent
 import android.util.Log
+import androidx.annotation.AnimRes
+import androidx.annotation.AnimatorRes
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import mobi.sevenwinds.common.core.ui.BaseActivity
 import ru.terrakok.cicerone.Screen
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
@@ -109,6 +113,69 @@ class MyNavigator(
         if (activity == null) return
 
         CiceroneActivityManager.getAppropriateIntent(screen, activity)?.let(activity::startActivity)
+    }
+
+    private var forwardAnimations: Array<Int>? = null
+    private var replaceAnimations: Array<Int>? = null
+
+    fun setForwardAnimation(
+        @AnimatorRes @AnimRes enter: Int,
+        @AnimatorRes @AnimRes exit: Int, @AnimatorRes @AnimRes popEnter: Int,
+        @AnimatorRes @AnimRes popExit: Int
+    ) {
+        forwardAnimations = arrayOf(enter, exit, popEnter, popExit)
+    }
+
+    fun setForwardAnimation(
+        @AnimatorRes @AnimRes enter: Int,
+        @AnimatorRes @AnimRes exit: Int
+    ) {
+        forwardAnimations = arrayOf(enter, exit)
+    }
+
+    fun setReplaceAnimation(
+        @AnimatorRes @AnimRes enter: Int,
+        @AnimatorRes @AnimRes exit: Int, @AnimatorRes @AnimRes popEnter: Int,
+        @AnimatorRes @AnimRes popExit: Int
+    ) {
+        replaceAnimations = arrayOf(enter, exit, popEnter, popExit)
+    }
+
+    fun setReplaceAnimation(
+        @AnimatorRes @AnimRes enter: Int,
+        @AnimatorRes @AnimRes exit: Int
+    ) {
+        replaceAnimations = arrayOf(enter, exit)
+    }
+
+    override fun setupFragmentTransaction(
+        command: Command?,
+        currentFragment: Fragment?,
+        nextFragment: Fragment?,
+        fragmentTransaction: FragmentTransaction?
+    ) {
+        super.setupFragmentTransaction(command, currentFragment, nextFragment, fragmentTransaction)
+
+        when (command) {
+            is Forward -> {
+                forwardAnimations?.let {
+                    setCustomAnimation(it, fragmentTransaction)
+                }
+            }
+            is Replace -> {
+                replaceAnimations?.let {
+                    setCustomAnimation(it, fragmentTransaction)
+                }
+            }
+        }
+    }
+
+    private fun setCustomAnimation(animArray: Array<Int>, ft: FragmentTransaction?){
+        when(animArray.size){
+            2 -> ft?.setCustomAnimations( animArray[0], animArray[1])
+            4 -> ft?.setCustomAnimations( animArray[0], animArray[1], animArray[2], animArray[3])
+            else -> {}
+        }
     }
 
     companion object {
